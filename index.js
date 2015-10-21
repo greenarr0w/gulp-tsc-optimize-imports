@@ -37,10 +37,10 @@ module.exports = function () {
                     //check if the import is used in the file -> that means more than 2 times
                     var amountOfUsingImport = (fileContentString.match(new RegExp(importName + '\\b', 'g')) || []).length;
                     if (amountOfUsingImport === 2) {
-                        gutil.log(gutil.colors.red("[unused import >>> " + fileName + "]"), fileName + ":" + lineNumber);
+                        gutil.log(gutil.colors.red('[unused import >>> ' + fileName + ']'), fileName + ':' + lineNumber);
                     }
                 } else {
-                    gutil.log(gutil.colors.yellow("[import name difference >>> " + importName + " <-> " + className + "]", fileName + ":" + lineNumber));
+                    gutil.log(gutil.colors.yellow('[import name difference >>> ' + importName + ' <-> ' + className + ']'), fileName + ':' + lineNumber);
                 }
             }
         });
