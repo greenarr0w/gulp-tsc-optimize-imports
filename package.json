@@ -8,5 +8,6 @@
         "through2": "~0.6.2",
         "path": "^0.12.7"
     },
-    "author": "greenarr0w <philipp.hollenstein95@gmail.com"
+    "author": "greenarr0w <philipp.hollenstein95@gmail.com",
+    "licence": "MIT"
 }
