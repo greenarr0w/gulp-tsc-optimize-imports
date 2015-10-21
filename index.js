@@ -12,7 +12,7 @@ module.exports = function (options) {
         importNames: true,
         semicolons: true
     };
-    var options = options || defaultOption;
+    var options = Object.assign({}, defaultOption, options);
 
     function optimizeImports(file, enc, cb) {
 
