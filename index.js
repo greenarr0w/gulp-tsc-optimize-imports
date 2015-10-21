@@ -11,7 +11,7 @@ module.exports = function (options) {
         unusedImports: true,
         importNames: true,
         semicolons: true
-    }
+    };
     var options = options || defaultOption;
 
     function optimizeImports(file, enc, cb) {
