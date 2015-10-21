@@ -23,6 +23,9 @@ module.exports = function () {
 
                 var beforeEquals = separatedByEquals[0];
                 var afterEquals = separatedByEquals[1];
+				
+				beforeEquals = beforeEquals.trim();
+				afterEquals = afterEquals.trim();
 
                 //get Import Name
                 var importName = beforeEquals;
