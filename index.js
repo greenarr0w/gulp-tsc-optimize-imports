@@ -34,7 +34,7 @@ module.exports = function (options) {
                 //has Semicolon
                 var hasSemicolon = importMatch[3];
                 if (hasSemicolon === "" && options.semicolons === true) {
-                    gutil.log(gutil.colors.magenta('[no Semicolon >>> ' + fileName + ']'), fileName + ':' + lineNumber);
+                    gutil.log(gutil.colors.magenta('[no Semicolon]'), fileName + ':' + lineNumber);
                 }
 
                 //check if className and importName are equal
@@ -42,7 +42,7 @@ module.exports = function (options) {
                     //check if the import is used in the file -> that means more than 2 times
                     var amountOfUsingImport = (fileContentString.match(new RegExp(importName + '\\b', 'g')) || []).length;
                     if (amountOfUsingImport === 2 && options.unusedImports === true) {
-                        gutil.log(gutil.colors.red('[unused import >>> ' + fileName + ']'), fileName + ':' + lineNumber);
+                        gutil.log(gutil.colors.red('[unused import >>> ' + importName + ']'), fileName + ':' + lineNumber);
                     }
                 } else {
                     if (options.importNames === true) {

@@ -1,6 +1,6 @@
 {
     "name": "gulp-tsc-optimize-imports",
-    "version": "0.0.13",
+    "version": "0.0.14",
     "description": "Optimize Imports",
     "main": "index.js",
     "dependencies": {
