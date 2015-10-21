@@ -6,7 +6,13 @@ var path = require('path');
 
 var PLUGIN_NAME = 'gulp-tsc-optimize-imports';
 
-module.exports = function () {
+module.exports = function (options) {
+    var defaultOption = {
+        unusedImports: true,
+        importNames: true,
+        semicolons: true
+    }
+    var options = options || defaultOption;
 
     function optimizeImports(file, enc, cb) {
 
@@ -27,7 +33,7 @@ module.exports = function () {
 
                 //has Semicolon
                 var hasSemicolon = importMatch[3];
-                if (hasSemicolon === "") {
+                if (hasSemicolon === "" && options.semicolons === true) {
                     gutil.log(gutil.colors.magenta('[no Semicolon >>> ' + fileName + ']'), fileName + ':' + lineNumber);
                 }
 
@@ -35,11 +41,13 @@ module.exports = function () {
                 if (importName === className) {
                     //check if the import is used in the file -> that means more than 2 times
                     var amountOfUsingImport = (fileContentString.match(new RegExp(importName + '\\b', 'g')) || []).length;
-                    if (amountOfUsingImport === 2) {
+                    if (amountOfUsingImport === 2 && options.unusedImports === true) {
                         gutil.log(gutil.colors.red('[unused import >>> ' + fileName + ']'), fileName + ':' + lineNumber);
                     }
                 } else {
-                    gutil.log(gutil.colors.yellow('[import name difference >>> ' + importName + ' <-> ' + className + ']'), fileName + ':' + lineNumber);
+                    if (options.importNames === true) {
+                        gutil.log(gutil.colors.yellow('[import name difference >>> ' + importName + ' <-> ' + className + ']'), fileName + ':' + lineNumber);
+                    }
                 }
             }
         });
