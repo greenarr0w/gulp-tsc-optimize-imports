@@ -17,23 +17,19 @@ module.exports = function () {
         arrayOfLines.forEach(function (line, i) {
             var lineNumber = i + 1;
 
-            if (line.match(/^(\s*)import\b/)) {
-                var withoutImport = line.split("import")[1];
-                var separatedByEquals = withoutImport.split("=");
-
-                var beforeEquals = separatedByEquals[0];
-                var afterEquals = separatedByEquals[1];
-				
-				beforeEquals = beforeEquals.trim();
-				afterEquals = afterEquals.trim();
-
+            if (line.test(/^\s*import\b\s*([a-z|A-Z|\d]*\b)\s*=.*?([a-z|A-Z|\d|]*?)\s*?(;{0,1})\s*?$/)) {
+                var importMatch = line.match(/^\s*import\b\s*([a-z|A-Z|\d]*\b)\s*=.*?([a-z|A-Z|\d|]*?)\s*?(;{0,1})\s*?$/);
                 //get Import Name
-                var importName = beforeEquals;
+                var importName = importMatch[1];
 
                 //get Class Name
-                afterEquals = afterEquals.replace(";", "");
-                var indexOfLastPoint = afterEquals.lastIndexOf(".");
-                var className = afterEquals.substring(indexOfLastPoint + 1);
+                var className = importMatch[2];
+
+                //has Semicolon
+                var hasSemicolon = importMatch[3];
+                if (hasSemicolon === "") {
+                    gutil.log(gutil.colors.magenta('[no Semicolon >>> ' + fileName + ']'), fileName + ':' + lineNumber);
+                }
 
                 //check if className and importName are equal
                 if (importName === className) {
