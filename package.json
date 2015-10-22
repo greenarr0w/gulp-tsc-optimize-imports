@@ -1,13 +1,32 @@
 {
     "name": "gulp-tsc-optimize-imports",
-    "version": "0.0.20",
+    "version": "0.0.21",
     "description": "Optimize Imports",
+    "contributors": [
+        "Philipp Hollenstein (https://github.com/greenarr0w)",
+        "Francisco Ramos (https://github.com/jscriptcoder)"
+    ],
+    "homepage": "https://github.com/greenarr0w/gulp-tsc-optimize-imports/",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/greenarr0w/gulp-tsc-optimize-imports.git"
+    },
     "main": "index.js",
     "dependencies": {
         "gulp-util": "^3.0.1",
         "through2": "~0.6.2",
         "path": "^0.12.7"
     },
-    "author": "greenarr0w <philipp.hollenstein95@gmail.com",
+    "author": "greenarr0w <philipp.hollenstein95@gmail.com>",
+    "keywords": [
+        "gulpplugin",
+        "typescript",
+        "gulp",
+        "tsc",
+        "import",
+        "unused",
+        "optimize"
+    ],
     "licence": "MIT"
+    
 }
