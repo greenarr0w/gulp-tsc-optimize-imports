@@ -40,7 +40,7 @@ module.exports = function (options) {
                 //check if className and importName are equal
                 if (importName === className) {
                     //check if the import is used in the file -> that means more than 2 times
-                    var amountOfUsingImport = (fileContentString.match(new RegExp(importName + '\\b', 'g')) || []).length;
+                    var amountOfUsingImport = (fileContentString.match(new RegExp('(?:^|\\b)' + importName + '(?=\\b|$)', 'g')) || []).length;
                     if (amountOfUsingImport === 2 && options.unusedImports === true) {
                         gutil.log(gutil.colors.red('[unused import >>> ' + importName + ']'), fileName + ':' + lineNumber);
                     }
