@@ -60,7 +60,7 @@ Explanation:
 Type: `boolean`
 Default: `true`
 
-flag, if you want to log your missing semicolons in the imports statements
+flag, if you want to log your missing semicolons in the import statements
 For Example:
 ```shell
 import MyClass = my.namespace.to.the.class.MyClass
