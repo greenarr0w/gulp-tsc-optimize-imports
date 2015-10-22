@@ -31,25 +31,25 @@ module.exports = function (options) {
                 //get Class Name
                 var className = importMatch[2];
 
-                //has Semicolon
-                var hasSemicolon = importMatch[3];
-                if (hasSemicolon === "" && options.semicolons === true) {
-                    gutil.log(gutil.colors.magenta('[no Semicolon]'), fileName + ':' + lineNumber);
+                //check if the import is used in the file -> that means more than 2 times
+                var amountOfUsingImport = (fileContentString.match(new RegExp('(?:^|\\b)' + importName + '(?=\\b|$)', 'g')) || []).length;
+                if (amountOfUsingImport <= 2 && options.unusedImports === true) {
+                    gutil.log(gutil.colors.red('[unused import >>> ' + importName + ']'), fileName + ':' + lineNumber);
+                } else {
+                    //check if className and importName are equal
+                    if (importName !== className) {
+                        if (options.importNames === true) {
+                            gutil.log(gutil.colors.yellow('[import name difference >>> ' + importName + ' <-> ' + className + ']'), fileName + ':' + lineNumber);
+                        }
+                    }
+                    //has Semicolon
+                    var hasSemicolon = importMatch[3];
+                    if (hasSemicolon === "" && options.semicolons === true) {
+                        gutil.log(gutil.colors.magenta('[no Semicolon]'), fileName + ':' + lineNumber);
+                    } 
                 }
 
-                //check if className and importName are equal
-                if (importName === className) {
-                    //check if the import is used in the file -> that means more than 2 times
-                    var amountOfUsingImport = (fileContentString.match(new RegExp('(?:^|\\b)' + importName + '(?=\\b|$)', 'g')) || []).length;
-                    if (amountOfUsingImport === 2 && options.unusedImports === true) {
-                        gutil.log(gutil.colors.red('[unused import >>> ' + importName + ']'), fileName + ':' + lineNumber);
-                    }
-                } else {
-                    if (options.importNames === true) {
-                        gutil.log(gutil.colors.yellow('[import name difference >>> ' + importName + ' <-> ' + className + ']'), fileName + ':' + lineNumber);
-                    }
-                }
-            }
+                
         });
 
         cb(null, file);
