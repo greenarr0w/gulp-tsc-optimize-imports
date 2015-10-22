@@ -18,7 +18,7 @@ var optimizeImports = require('gulp-tsc-optimize-imports');
 var typescriptFiles = 'web/**/*.ts';
 
 gulp.task('optimizeImportsTask ', function () {
-    return gulp.src(paths.typescriptFiles).pipe(optimizeImports());
+    return gulp.src(typescriptFiles).pipe(optimizeImports());
 });
 ```
 
