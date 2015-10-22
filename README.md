@@ -6,12 +6,12 @@ This Gulp Plugin logs you (detailed explanation below):
 * all the semicolons, which are missing
 
 ## Usage
-1. Step: Install your plugin as a development dependency:
+First: Install your plugin as a development dependency:
 ```shell
 npm install --save-dev gulp-tsc-optimize-imports
 ```
 
-2. Step: Use it in your gulpfile.js:
+Second: Use it in your gulpfile.js:
 ```shell
 var optimizeImports = require('gulp-tsc-optimize-imports');
 
