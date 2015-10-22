@@ -22,7 +22,7 @@ gulp.task('optimizeImportsTask ', function () {
 });
 ```
 
-## Usage
+## API
 
 ### optimizeImports(options)
 
