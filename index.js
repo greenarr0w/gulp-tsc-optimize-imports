@@ -22,7 +22,7 @@ module.exports = function (options) {
         var arrayOfLines = fileContentString.split("\n");
         arrayOfLines.forEach(function (line, i) {
             var lineNumber = i + 1;
-            var importMatcher = /^\s*import\b\s*([a-z|A-Z|\d]*\b)\s*=.*?([a-z|A-Z|\d|]*?)\s*?(;{0,1})\s*?$/;
+            var importMatcher = /^\s*import\b\s*([a-z|A-Z|\d]+\b)\s*=.*?([a-z|A-Z|\d|]+)\s*?(;{0,1})\s*?$/;
             if (importMatcher.test(line)) {
                 var importMatch = line.match(importMatcher);
                 //get Import Name
