@@ -1,6 +1,6 @@
 {
     "name": "gulp-tsc-optimize-imports",
-    "version": "0.0.21",
+    "version": "0.0.22",
     "description": "Optimize Imports",
     "contributors": [
         "Philipp Hollenstein (https://github.com/greenarr0w)",
